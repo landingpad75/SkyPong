@@ -5,7 +5,7 @@
 void StartWindow(Image logo, char* name){
 	init();
 	InitWindow(1280, 800, name);
-	SetTargetFPS(60);
+	SetTargetFPS(144);
 	SetWindowIcon(logo);
 	InitAudioDevice();
 	SetExitKey(KEY_NULL);

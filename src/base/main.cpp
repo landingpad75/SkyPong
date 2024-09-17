@@ -4,65 +4,50 @@
 #define GLSL_VERSION            330
 
 using namespace std;
-float toggleSize = 57;
-Rectangle settingsButton = { midwidth - buttonSize / 2, midheight + buttonSpacing, buttonSize, buttonSize };
-Rectangle playButton = { midwidth - buttonSize - buttonSpacing / 2 - 100, midheight + buttonSpacing, buttonSize, buttonSize };
-Rectangle editorButton = { midwidth + buttonSpacing / 2 + 100, midheight + buttonSpacing, buttonSize, buttonSize };
 
-Theme gameTheme = NORMAL;
-Theme song = NORMAL;
-char* Themetext;
-Color btclr1, btclr2;
-
-GameScreen pausedFrom = NAN;
-GameScreen windowState = LOADING;
-RPCAt RPC = NO;
-matchMode match = NONE;
-
-float addwidth = 0;
-int cpuScore = 0;
-int playerScore = 0;
-int a = 0;
-int b = 0;
 
 int main(void) {
-    Image loogo = LoadImage("./resources/icons/webwise.png");
-    Image smallWW = LoadImage("./resources/icons/webwise_small.png");
     Image icon = LoadImage("./resources/icons/icon.png");
     char* title = "SkyPong";
     StartWindow(icon, title);
-    Sound sretro = LoadSound("./resources/music/retro.mp3");
-    Shader glowShader = LoadShader("resources/shaders/glow.vs", "resources/shaders/glow.fs");
+    Settings settings;
+    LoadingScreenAnim loading;
+    loading.screenHeight = screen_height;
+    loading.screenWidth = screen_width;
+    TitleScreen titleScreen;
+    titleScreen.anim.screenHeight = screen_height;
+    titleScreen.anim.screenWidth = screen_width;
 
-    float voice = 0.5;
-
-    bool initted = true;
-    Texture2D logo = LoadTextureFromImage(loogo);
-    int frames = 0;
-    Color black = BLACK;
-    bool build = false;
-    while (!WindowShouldClose() && initted){
-        Vector2 mousePosition = GetMousePosition();
-        ButtonPressed isPressed = checkCollisions(mousePosition);
-        KeyEvents(windowState, RPC, isPressed, initted, match, pausedFrom, voice, sretro, gameTheme, frames, black, WebWiseLogoPos, build, a);
-        BeginDrawing();
-        switch(windowState){
+    while (!WindowShouldClose()){
+        switch(settings.windowState){
             case LOADING: {
-                if(frames == 30){
-                    frames = 0;
-                    a += 85;
-                    b += 30;
+                int done = loading.UpdateAnimationData();
+                if(done){
+                    settings.setWindowState(TITLE);
+                    SetTargetFPS(60);    
                 }
-                Image idk = ImageCopy(smallWW.width + a >= 680 ? loogo : smallWW);
-                ImageResize(&idk, smallWW.width +a, smallWW.height + b);
-                Texture2D thgf = LoadTextureFromImage(idk);
-                Vector2D WebWiseLogoPos = { (screen_width - thgf.width) / 2, (screen_height - thgf.height) / 2 };
-                BeginShaderMode(glowShader);
-                LoadingScreen(thgf, WebWiseLogoPos.x, WebWiseLogoPos.y, black);
-                EndShaderMode();
+            } break;
+            case TITLE: {
+                if(!titleScreen.anim.done)
+                    titleScreen.anim.done = titleScreen.anim.UpdateAnimationData();
+                
             } break;
             default: break;
         }
+        BeginDrawing();
+        switch(settings.windowState){
+            case LOADING: {
+                loading.DrawAnimation();
+            } break;
+            case TITLE:{
+                if(!titleScreen.anim.done)
+                    titleScreen.anim.DrawAnimation();
+                else 
+                    titleScreen.Draw();
+            } break;
+            default: break;
+        }
+        DrawFPS(20, 20);
         EndDrawing();
     }
     end();

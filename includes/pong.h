@@ -5,3 +5,7 @@
 #include <raylib.h>
 #include <common.h>
 #include <paddle.h>
+#include <settings.h>
+#include <colors.h>
+#include <title.h>
+#include <loading.h>
