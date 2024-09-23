@@ -1,6 +1,6 @@
 #include <common.h>
 
-void SetTheme(Theme &gameTheme, char* &Themetext){
+void SetTheme(Theme &gameTheme, std::string &Themetext){
 	switch(gameTheme){
         case NORMAL: {
             Themetext = "DEFAULT";

@@ -17,8 +17,9 @@ void DrawTable(Theme theme) {
         case NORMAL: {
              ClearBackground(DG);
              DrawRectangle(screen_width / 2, 0, screen_width / 2, screen_height, G);
-             DrawCircle(screen_width / 2, screen_height / 2, 150, LG);
+             DrawCircle(screen_width / 2, screen_height / 2, 151, WHITE);
              DrawLine(screen_width / 2, 0, screen_width / 2, screen_height, WHITE);
+             DrawCircle(screen_width / 2, screen_height / 2, 150, LG);
              pc = wite;
 //             btclr1 = buttonColor;
 //             btclr2 = otherBlue;

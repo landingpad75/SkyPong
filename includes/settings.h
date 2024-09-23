@@ -1,5 +1,4 @@
-#ifndef SETTINGS_H
-#define SETTINGS_H
+#pragma once
 
 #include <raylib.h>
 #include <common.h>
@@ -9,7 +8,7 @@ public:
     Theme gameTheme = NORMAL;
 	Theme song = NORMAL;
 
-	GameScreen pausedFrom = NAN;
+	GameScreen pausedFrom = GameScreen::TITLE;
 	GameScreen windowState = LOADING;
 	RPCAt RPC = NO;
 	matchMode match = NONE;
@@ -23,5 +22,3 @@ public:
     // Setter for RPC location and match mode
     void setRPCLocation(RPCAt loc, matchMode mode = NONE);
 };
-
-#endif // SETTINGS_H

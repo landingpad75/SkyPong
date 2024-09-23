@@ -8,3 +8,7 @@ libs/
 Inter/
 idk/
 include/
+boost
+websocketpp
+node_modules
+asm

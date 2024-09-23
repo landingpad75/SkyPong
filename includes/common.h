@@ -6,7 +6,7 @@
 const float screen_width = 1280;
 const float screen_height = 800;
 
-typedef enum GameScreen { LOADING, TITLE, GAMEVSCPU, GAME, GAMEVSPLAYER, PAUSE, SETTINGS, SECRET, TIMED, NAN } GameScreen;
+typedef enum GameScreen { LOADING, TITLE, GAMEVSCPU, GAME, GAMEVSPLAYER, PAUSE, SETTINGS, SECRET, TIMED, NOTHING } GameScreen;
 typedef enum RPCAt { HOME, PAUSED, INGAME, EDITORS, SETTING, TIME, NO } RPCAt;
 typedef enum matchMode { VSCPU, VSPLAYER, VSPLAYERONLINE, NONE } matchMode;
 typedef enum Theme { NORMAL, RETRO, PARTY } Theme;
@@ -36,8 +36,8 @@ Ball makeBall();
 void GameModeChooser(Theme gameTheme);
 Paddle makePaddle(bool automatic, int pllayer);
 ButtonPressed checkCollisions(Vector2 mousePosition);
-void StartWindow(Image logo, char* name);
-void SetTheme(Theme &gameTheme, char* &Themetext);
+void StartWindow(Image logo, std::string name);
+void SetTheme(Theme &gameTheme, std::string &Themetext);
 void KeyEvents(
 	GameScreen &windowState, 
 	RPCAt& RPC, 
@@ -54,4 +54,3 @@ void KeyEvents(
 	bool& build,
 	int& numbah
 );
-void LoadingScreen(Texture2D logo, int x, int y, Color& color);
