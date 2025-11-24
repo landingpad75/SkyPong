@@ -1,0 +1,9 @@
+[submodule "outside/discord"]
+	path = outside/discord
+	url = https://github.com/a-day-old-bagel/discordCppSdk
+[submodule "outside/raylib"]
+	path = outside/raylib
+	url = https://github.com/raysan5/raylib
+[submodule "outside/enet"]
+	path = outside/enet
+	url = https://github.com/lsalzman/enet
