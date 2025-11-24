@@ -1,14 +1,1 @@
-thing.h
-video.mp4
-video.rar
-video/
-out/
-lib/
-libs/
-Inter/
-idk/
-include/
-boost
-websocketpp
-node_modules
-asm
+build
