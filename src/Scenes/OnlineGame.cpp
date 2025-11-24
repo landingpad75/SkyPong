@@ -289,8 +289,8 @@ void OnlineGame::DrawGame() {
     float screenWidth = GetRenderWidth();
     float screenHeight = GetRenderHeight();
     
-    Color leftColor = (Color){20, 160, 133, 255};
-    Color rightColor = (Color){38, 185, 154, 255};
+    Color leftColor = Color {20, 160, 133, 255};
+    Color rightColor = Color {38, 185, 154, 255};
     
     ClearBackground(leftColor);
     DrawRectangle(screenWidth / 2, 0, screenWidth / 2, screenHeight, rightColor);
@@ -299,7 +299,7 @@ void OnlineGame::DrawGame() {
         DrawRectangle(screenWidth / 2 - 2, i, 4, 10, WHITE);
     }
     
-    Color myPaddleColor = CLITERAL(Color){255, 255, 100, 255};
+    Color myPaddleColor = Color {255, 255, 100, 255};
     Color opponentPaddleColor = WHITE;
     
     DrawRectangle(state.leftPaddle.x, state.leftPaddle.y, 

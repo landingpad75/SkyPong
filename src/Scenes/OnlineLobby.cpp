@@ -282,8 +282,8 @@ void OnlineLobby::Draw() {
     float screenWidth = GetRenderWidth();
     float screenHeight = GetRenderHeight();
 
-    Color leftColor = (Color){20, 160, 133, 255};
-    Color rightColor = (Color){38, 185, 154, 255};
+    Color leftColor = Color {20, 160, 133, 255};
+    Color rightColor = Color {38, 185, 154, 255};
     
     ClearBackground(leftColor);
     DrawRectangle(screenWidth / 2, 0, screenWidth / 2, screenHeight, rightColor);
@@ -296,7 +296,7 @@ void OnlineLobby::Draw() {
     bool newHovered = CheckCollisionPointCircle(mouse, newBtnPos, newBtnRadius);
     
     DrawCircle(0, 0, 151, WHITE);
-    DrawCircle(0, 0, 150, newHovered ? CLITERAL(Color){100, 230, 200, 255} : CLITERAL(Color){129, 204, 184, 255});
+    DrawCircle(0, 0, 150, newHovered ? Color {100, 230, 200, 255} : Color {129, 204, 184, 255});
     
     const char* newText = "NEW";
     int newFontSize = 35;
@@ -308,7 +308,7 @@ void OnlineLobby::Draw() {
     bool backHovered = CheckCollisionPointCircle(mouse, backBtnPos, backBtnRadius);
     
     DrawCircle(screenWidth, screenHeight, 101, WHITE);
-    DrawCircle(screenWidth, screenHeight, 100, backHovered ? CLITERAL(Color){100, 230, 200, 255} : CLITERAL(Color){129, 204, 184, 255});
+    DrawCircle(screenWidth, screenHeight, 100, backHovered ? Color {100, 230, 200, 255} : Color{129, 204, 184, 255});
     
     const char* backText = state == LobbyState::InRoom ? "LEAVE" : "BACK";
     int backFontSize = 28;
@@ -359,7 +359,7 @@ void OnlineLobby::DrawRoomList() {
             float containerX = centerX - containerWidth / 2;
             float containerY = yPos - containerHeight / 2;
             
-            Color bgColor = roomHovered ? Fade(CLITERAL(Color){70, 200, 180, 255}, 0.5f) : Fade(CLITERAL(Color){50, 180, 160, 255}, 0.4f);
+            Color bgColor = roomHovered ? Fade(Color {70, 200, 180, 255}, 0.5f) : Fade(Color {50, 180, 160, 255}, 0.4f);
             DrawRectangle(containerX + 35, containerY, containerWidth - 70, containerHeight, bgColor);
             DrawCircle(containerX + 35, yPos, 35, bgColor);
             DrawCircle(containerX + containerWidth - 35, yPos, 35, bgColor);
@@ -400,7 +400,7 @@ void OnlineLobby::DrawInRoom() {
     
     float containerRadius = 220;
     DrawCircle(centerX, centerY, containerRadius + 2, WHITE);
-    DrawCircle(centerX, centerY, containerRadius, Fade(CLITERAL(Color){40, 170, 150, 255}, 0.6f));
+    DrawCircle(centerX, centerY, containerRadius, Fade(Color {40, 170, 150, 255}, 0.6f));
     
     DrawCircle(centerX, centerY, containerRadius - 20, Fade(WHITE, 0.1f));
     

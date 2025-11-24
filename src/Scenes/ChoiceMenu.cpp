@@ -5,9 +5,9 @@ void ChoiceMenu::Init() {
     float screenWidth = GetRenderWidth();
     float screenHeight = GetRenderHeight();
 
-    aiButton = {{screenWidth / 2 - 280, screenHeight / 2}, 90, CLITERAL(Color){141, 189, 174, 255}, "VS AI", false};
-    friendButton = {{screenWidth / 2, screenHeight / 2}, 90, CLITERAL(Color){111, 168, 220, 255}, "VS Friend", false};
-    onlineButton = {{screenWidth / 2 + 280, screenHeight / 2}, 90, CLITERAL(Color){255, 193, 86, 255}, "Online", false};
+    aiButton = {{screenWidth / 2 - 280, screenHeight / 2}, 90, Color{141, 189, 174, 255}, "VS AI", false};
+    friendButton = {{screenWidth / 2, screenHeight / 2}, 90, Color{111, 168, 220, 255}, "VS Friend", false};
+    onlineButton = {{screenWidth / 2 + 280, screenHeight / 2}, 90, Color{255, 193, 86, 255}, "Online", false};
 }
 
 void ChoiceMenu::Deinit() {}
@@ -50,8 +50,8 @@ void ChoiceMenu::Draw() {
     float screenWidth = GetRenderWidth();
     float screenHeight = GetRenderHeight();
 
-    Color leftColor = (Color){20, 160, 133, 255};
-    Color rightColor = (Color){38, 185, 154, 255};
+    Color leftColor = Color {20, 160, 133, 255};
+    Color rightColor = Color {38, 185, 154, 255};
     
     ClearBackground(leftColor);
     DrawRectangle(screenWidth / 2, 0, screenWidth / 2, screenHeight, rightColor);
@@ -59,9 +59,9 @@ void ChoiceMenu::Draw() {
     DrawLine(screenWidth / 2, 0, screenWidth / 2, screenHeight, WHITE);
     
     DrawCircle(0, 0, 151, WHITE);
-    DrawCircle(0, 0, 150, CLITERAL(Color){129, 204, 184, 255});
+    DrawCircle(0, 0, 150, Color{129, 204, 184, 255});
     DrawCircle(screenWidth, screenHeight, 101, WHITE);
-    DrawCircle(screenWidth, screenHeight, 100, CLITERAL(Color){129, 204, 184, 255});
+    DrawCircle(screenWidth, screenHeight, 100, Color{129, 204, 184, 255});
 
     const char* title = "Choose Game Mode";
     int titleFontSize = 50;

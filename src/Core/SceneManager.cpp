@@ -1,5 +1,11 @@
-#include <Core/SceneManager.hpp>
+#define WIN32_LEAN_AND_MEAN
+#define NOGDI
+#define NOUSER
+#define NOKERNEL
+#define NOSOUND
+#define NOMINMAX
 #include <raylib.h>
+#include <Core/SceneManager.hpp>
 
 SceneManager::SceneManager()
     : transitionState(TransitionState::NONE)

@@ -1,6 +1,12 @@
+#define WIN32_LEAN_AND_MEAN
+#define NOGDI
+#define NOUSER
+#define NOKERNEL
+#define NOSOUND
+#define NOMINMAX
+#include <raylib.h>
 #include <Scenes/MainMenu.hpp>
 #include <Discord/DiscordManager.hpp>
-#include <raylib.h>
 
 void MainMenu::Init() {
     DiscordManager::Instance().SetState(DiscordState::MainMenu);
@@ -135,10 +141,10 @@ void MainMenu::DrawAnimationPhase() {
         DrawCircle(screenWidth / 2, screenHeight / 2, middleCircleRadius, middleCircleColor);
         
         DrawCircle(0, 0, middleCircleRadius >= 151 ? 151 : middleCircleRadius + 1, WHITE);
-        DrawCircle(0, 0, middleCircleRadius >= 150 ? 150 : middleCircleRadius + 1, (Color){129, 204, 184, 255});
+        DrawCircle(0, 0, middleCircleRadius >= 150 ? 150 : middleCircleRadius + 1, Color {129, 204, 184, 255});
         
         DrawCircle(GetRenderWidth(), GetRenderHeight(), middleCircleRadius >= 101 ? 101 : middleCircleRadius + 1, WHITE);
-        DrawCircle(GetRenderWidth(), GetRenderHeight(), middleCircleRadius >= 100 ? 100 : middleCircleRadius, (Color){129, 204, 184, 255});
+        DrawCircle(GetRenderWidth(), GetRenderHeight(), middleCircleRadius >= 100 ? 100 : middleCircleRadius, Color {129, 204, 184, 255});
     }
 }
 

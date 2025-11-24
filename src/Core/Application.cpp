@@ -1,5 +1,11 @@
-#include <Core/Application.hpp>
+#define WIN32_LEAN_AND_MEAN
+#define NOGDI
+#define NOUSER
+#define NOKERNEL
+#define NOSOUND
+#define NOMINMAX
 #include <raylib.h>
+#include <Core/Application.hpp>
 unsigned int flags = 0;
 
 

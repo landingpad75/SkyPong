@@ -36,6 +36,12 @@ add_executable(SkyPong
     src/main.cpp
 )
 
+find_library(DISCORD_GAME_SDK discord_game_sdk PATHS ${CMAKE_SOURCE_DIR}/lib ${CMAKE_SOURCE_DIR}/outside/discord/source)
+
+if(DISCORD_GAME_SDK)
+    target_link_libraries(SkyPong ${DISCORD_GAME_SDK})
+endif()
+
 target_include_directories(SkyPong PRIVATE
     include
     outside/enet/include

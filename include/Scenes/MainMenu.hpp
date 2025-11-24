@@ -1,6 +1,13 @@
+#pragma once
+#define WIN32_LEAN_AND_MEAN
+#define NOGDI
+#define NOUSER
+#define NOKERNEL
+#define NOSOUND
+#define NOMINMAX
+#include <raylib.h>
 #include <Core/Scene.hpp>
 #include <Core/SceneManager.hpp>
-#include <raylib.h>
 
 class MainMenu : public Scene {
 public:
@@ -24,9 +31,9 @@ private:
     
     AnimationPhase currentPhase = AnimationPhase::TopCircle;
     
-    Color bottomCircleColor = (Color){20, 160, 133, 255};
-    Color topCircleColor = (Color){38, 185, 154, 255};
-    Color middleCircleColor = (Color){129, 204, 184, 255};
+    Color bottomCircleColor = Color {20, 160, 133, 255};
+    Color topCircleColor = Color {38, 185, 154, 255};
+    Color middleCircleColor = Color {129, 204, 184, 255};
     Color backgroundColor = BLACK;
     
     float topCircleRadius = 0.0f;

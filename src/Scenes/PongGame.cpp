@@ -180,8 +180,8 @@ void PongGame::DrawGame() {
     float screenWidth = GetRenderWidth();
     float screenHeight = GetRenderHeight();
     
-    Color leftColor = (Color){20, 160, 133, 255};
-    Color rightColor = (Color){38, 185, 154, 255};
+    Color leftColor = Color {20, 160, 133, 255};
+    Color rightColor = Color {38, 185, 154, 255};
     
     ClearBackground(leftColor);
     DrawRectangle(screenWidth / 2, 0, screenWidth / 2, screenHeight, rightColor);
