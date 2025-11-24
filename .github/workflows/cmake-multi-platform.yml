@@ -75,7 +75,7 @@ jobs:
         curl -L -o discord_sdk.zip https://dl-game-sdk.discordapp.net/latest/discord_game_sdk.zip
         powershell "Expand-Archive discord_sdk.zip -DestinationPath discord_sdk"
         copy discord_sdk\lib\x86_64\discord_game_sdk.dll outside\discord\source\
-        copy discord_sdk\lib\x86_64\discord_game_sdk.lib outside\discord\source\
+        copy discord_sdk\lib\x86_64\discord_game_sdk.dll.lib outside\discord\source\discord_game_sdk.lib
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
