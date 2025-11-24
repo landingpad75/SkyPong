@@ -46,6 +46,36 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 0
+    - name: Install X11 and OpenGL dependencies (Linux)
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+        libx11-dev \
+        libxrandr-dev \
+        libxi-dev \
+        libxinerama-dev \
+        libxcursor-dev \
+        libxxf86vm-dev \
+        libgl1-mesa-dev \
+        libglu1-mesa-dev
+    - name: Download Discord SDK (Linux)
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        wget -O discord_sdk.zip https://dl-game-sdk.discordapp.net/latest/discord_game_sdk.zip
+        unzip discord_sdk.zip -d discord_sdk
+        cp discord_sdk/lib/x86_64/discord_game_sdk.so outside/discord/source/
+
+    - name: Download Discord SDK (Windows)
+      if: matrix.os == 'windows-latest'
+      run: |
+        curl -L -o discord_sdk.zip https://dl-game-sdk.discordapp.net/latest/discord_game_sdk.zip
+        powershell "Expand-Archive discord_sdk.zip -DestinationPath discord_sdk"
+        copy discord_sdk\lib\x86_64\discord_game_sdk.dll outside\discord\source\
+        copy discord_sdk\lib\x86_64\discord_game_sdk.lib outside\discord\source\
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
