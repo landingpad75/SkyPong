@@ -20,6 +20,9 @@ add_library(SPEngine STATIC
 
 target_include_directories(SPEngine PRIVATE
     include
+    outside/enet/include
+    outside/discord/source
+    outside/raylib/include
 )
 
 target_link_libraries(SPEngine PRIVATE raylib enet discord)
@@ -35,6 +38,9 @@ add_executable(SkyPong
 
 target_include_directories(SkyPong PRIVATE
     include
+    outside/enet/include
+    outside/discord/source
+    outside/raylib/include
 )
 
 target_link_libraries(SkyPong PRIVATE
@@ -51,6 +57,9 @@ add_executable(SkyPongServer
 
 target_include_directories(SkyPongServer PRIVATE
     include
+    outside/enet/include
+    outside/discord/source
+    outside/raylib/include
 )
 
 target_link_libraries(SkyPongServer PRIVATE
