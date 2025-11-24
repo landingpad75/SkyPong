@@ -1,4 +1,5 @@
 #include <Network/NetworkClient.hpp>
+#include <enet/enet.h>
 #include <iostream>
 
 NetworkClient::NetworkClient() {}

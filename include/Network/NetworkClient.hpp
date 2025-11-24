@@ -1,11 +1,13 @@
 #pragma once
-#include <enet/enet.h>
 #include <string>
 #include <functional>
 #include <thread>
 #include <atomic>
 #include <mutex>
 #include <queue>
+
+typedef struct _ENetHost ENetHost;
+typedef struct _ENetPeer ENetPeer;
 
 enum class NetworkEvent {
     Connected,
