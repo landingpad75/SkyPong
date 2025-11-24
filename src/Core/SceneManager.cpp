@@ -1,4 +1,5 @@
 #include <Core/SceneManager.hpp>
+#include <raylib.h>
 
 SceneManager::SceneManager()
     : transitionState(TransitionState::NONE)

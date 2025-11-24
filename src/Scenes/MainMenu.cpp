@@ -1,5 +1,6 @@
 #include <Scenes/MainMenu.hpp>
 #include <Discord/DiscordManager.hpp>
+#include <raylib.h>
 
 void MainMenu::Init() {
     DiscordManager::Instance().SetState(DiscordState::MainMenu);
