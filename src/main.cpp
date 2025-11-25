@@ -7,14 +7,14 @@
 #include <Scenes/OnlineGame.hpp>
 #include <Game/GameState.hpp>
 #include <Network/NetworkClient.hpp>
-#include <Discord/DiscordManager.hpp>
+#include <Discord/DiscordWrapper.h>
 
 Application app;
 NetworkClient* g_networkClient = nullptr;
 bool g_isHost = false;
 
 int main(){
-    DiscordManager::Instance().Init();
+    Discord_Init();
     app
       .setFullscreen(false)
       .setResizable(true)
@@ -30,6 +30,7 @@ int main(){
     app.mgr.AddTopScene(Scope(MainMenu), "main_menu");
     
     while (app.running()) {
+        Discord_Update();
         app.mgr.Update();
 
         BeginDrawing();
@@ -37,7 +38,7 @@ int main(){
         EndDrawing();
     }
     
-    DiscordManager::Instance().Shutdown();
+    Discord_Shutdown();
     
     if (g_networkClient) {
         g_networkClient->Shutdown();

@@ -1,9 +1,7 @@
 #include <Scenes/MainMenu.hpp>
-#include <Discord/DiscordManager.hpp>
 #include <raylib.h>
 
 void MainMenu::Init() {
-    DiscordManager::Instance().SetState(DiscordState::MainMenu);
     Image exitImg = LoadImage("./exit.png");
     exitTexture = LoadTextureFromImage(exitImg);
     UnloadImage(exitImg);
@@ -21,8 +19,6 @@ void MainMenu::Deinit() {
 }
 
 void MainMenu::Update(float dt) {
-    DiscordManager::Instance().Update();
-    
     if (!animationComplete) {
         UpdateAnimation(dt);
     } else {

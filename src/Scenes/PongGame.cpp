@@ -1,19 +1,13 @@
 #include <Scenes/PongGame.hpp>
-#include <Discord/DiscordManager.hpp>
 #include <cmath>
 
 void PongGame::Init() {
     state.Init(GetRenderWidth(), GetRenderHeight());
-    
-    std::string details = mode == GameMode::VsAI ? "VS AI" : "VS Friend";
-    DiscordManager::Instance().SetState(DiscordState::InGame, details);
 }
 
 void PongGame::Deinit() {}
 
 void PongGame::Update(float dt) {
-    DiscordManager::Instance().Update();
-    
     if (IsKeyPressed(KEY_ESCAPE)) {
         mgr->ReplaceScene("choice_menu");
         return;

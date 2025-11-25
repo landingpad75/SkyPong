@@ -1,6 +1,5 @@
 #include <Scenes/OnlineGame.hpp>
 #include <Network/Protocol.hpp>
-#include <Discord/DiscordManager.hpp>
 #include <iostream>
 #include <sstream>
 
@@ -18,8 +17,6 @@ void OnlineGame::Init() {
 void OnlineGame::Deinit() {}
 
 void OnlineGame::Update(float dt) {
-    DiscordManager::Instance().Update();
-    
     if (IsKeyPressed(KEY_ESCAPE)) {
         mgr->ReplaceScene("vs_online");
         return;

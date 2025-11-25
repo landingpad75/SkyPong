@@ -1,13 +1,17 @@
 #pragma once
 
+// WARNING: This header includes Windows headers via Discord SDK
+// DO NOT include this in any file that also includes raylib.h
+// Use Discord/DiscordWrapper.h instead for raylib code
+
 #ifdef _WIN32
-#ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
-#endif
-#ifndef NOMINMAX
 #define NOMINMAX
-#endif
 #include <windows.h>
+#undef DrawText
+#undef LoadImage
+#undef CloseWindow
+#undef ShowCursor
 #endif
 
 #include <discord.h>

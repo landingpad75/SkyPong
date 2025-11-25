@@ -1,18 +1,9 @@
 #include <Scenes/OnlineLobby.hpp>
 #include <Network/Protocol.hpp>
-#include <Discord/DiscordManager.hpp>
 #include <iostream>
 #include <cmath>
 
 void OnlineLobby::Init() {
-    DiscordManager::Instance().SetState(DiscordState::InLobby);
-    
-    DiscordManager::Instance().SetJoinCallback([this](const std::string& roomId) {
-        if (state == LobbyState::RoomList && g_networkClient && g_networkClient->IsConnected()) {
-            JoinRoom(roomId);
-        }
-    });
-    
     if (g_networkClient && g_networkClient->IsConnected()) {
         statusText = "Connected to server";
         statusColor = GREEN;
@@ -47,8 +38,6 @@ void OnlineLobby::Deinit() {
 }
 
 void OnlineLobby::Update(float dt) {
-    DiscordManager::Instance().Update();
-    
     if (!g_networkClient) {
         return;
     }
@@ -125,8 +114,7 @@ void OnlineLobby::HandleInRoomInput() {
 void OnlineLobby::CreateRoom() {
     if (!g_networkClient) return;
     
-    std::string playerName = DiscordManager::Instance().GetPlayerName();
-    std::string msg = Protocol::Serialize(Protocol::MessageType::CreateRoom, playerName);
+    std::string msg = Protocol::Serialize(Protocol::MessageType::CreateRoom, "playerName");
     g_networkClient->Send(msg);
     statusText = "Creating room...";
     statusColor = YELLOW;
@@ -211,8 +199,6 @@ void OnlineLobby::HandleProtocolMessage(const std::string& data) {
             statusText = "Room created: " + payload;
             statusColor = GREEN;
             messages.push_back("Waiting for opponent...");
-            
-            DiscordManager::Instance().SetState(DiscordState::Matchmaking, "Waiting for opponent", payload);
             break;
             
         case Protocol::MessageType::RoomJoined:
@@ -221,15 +207,10 @@ void OnlineLobby::HandleProtocolMessage(const std::string& data) {
             statusText = "Joined room: " + payload;
             statusColor = GREEN;
             messages.push_back("Waiting for game to start...");
-            
-            DiscordManager::Instance().SetState(DiscordState::Matchmaking, "Joined room", payload);
             break;
             
         case Protocol::MessageType::GameStart:
             messages.push_back("Game starting!");
-            
-            DiscordManager::Instance().SetState(DiscordState::InGame, "Online Match", currentRoomId);
-            
             StartGame();
             break;
             

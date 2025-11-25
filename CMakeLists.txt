@@ -6,11 +6,6 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Windows-specific defines to prevent header conflicts
-if(WIN32)
-    add_compile_definitions(WIN32_LEAN_AND_MEAN NOMINMAX)
-endif()
-
 add_subdirectory(outside/raylib)
 add_subdirectory(outside/discord)
 add_subdirectory(outside/enet)
@@ -21,6 +16,7 @@ add_library(SPEngine STATIC
     src/Network/NetworkClient.cpp
     src/Network/Protocol.cpp
     src/Discord/DiscordManager.cpp
+    src/Discord/DiscordWrapper.cpp
 )
 
 target_include_directories(SPEngine PRIVATE
