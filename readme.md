@@ -1,6 +1,6 @@
 # SkyPong
 
-That one pong game that i've been working on frfr
+That one pong game that i've been working on frfr.
 
 ## License
 
